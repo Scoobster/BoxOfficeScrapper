@@ -24,6 +24,7 @@ exports.read_weekend_data = function(req, res) {
 
                 const movie = {
                     rank: $(rowItems[0]).text().trim(),
+                    rankLW: $(rowItems[1]).text().trim(),
                     name: $(rowItems[2]).text().trim(),
                     weekendGross: $(rowItems[4]).text().trim(),
                     totalGross: $(rowItems[9]).text().trim(),
