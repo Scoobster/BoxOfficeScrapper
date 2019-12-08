@@ -2,10 +2,19 @@
 
 const rp = require('request-promise');
 const $ = require('cheerio');
-const url = "https://www.the-numbers.com/weekend-box-office-chart";
+const base_url = "https://www.the-numbers.com/";
 
 exports.read_weekend_data = function(req, res) {
-    var data;
+    var url;
+
+    if (req.params.weekendId) {
+        var idConvert = (req.params.weekendId);
+        idConvert = idConvert.replace("-", "/");
+        idConvert = idConvert.replace("-", "/");
+        url = base_url + "box-office-chart/weekend/" + idConvert;
+    } else {
+        url = base_url + "weekend-box-office-chart";
+    }
 
     rp(url)
         .then(async function(html) {
